@@ -12,28 +12,20 @@ body{
     display: none;
 }
 
+html, body {
+    margin: 0;
+    scrollbar-width: none;
+  }
+
 /* Работает в Firefox */
 .blog_wrapper {
-    scrollbar-width: thin;
-    scrollbar-color: #F97247 #fff;
-  }
-  
-  /* Работает в Chrome, Edge и Safari */
-  .blog_wrapper::-webkit-scrollbar {
-    width: 4px;
-    height: 77.68px;
-    border-radius: 10px 0px 0px 0px;
-  }
-  
-  .blog_wrapper::-webkit-scrollbar-track {
-    background: #fff;
-  }
-  
-  .blog_wrapper::-webkit-scrollbar-thumb {
-    background-color: #F97247;
-    border-radius: 20px;
-    border: 3px solid #050c26;;
-  }
+    scrollbar-width: none;
+}
+
+/* Работает в Chrome, Edge и Safari */
+.blog_wrapper::-webkit-scrollbar {
+    display: none;
+}
 
 .main_btn {
     display: block;
@@ -96,18 +88,26 @@ body{
     border: #F97247 solid 2px;
     border-radius: 50px;
     overflow: auto;
-    padding: 10px 16px 10px 10px;
+    padding: 0 16px 10px 10px;
+}
+
+.blog_wrapper .spacer {
+    height: 10px;
 }
 
 .blog_wrapper .link_blog {
     display: block;
     border-radius: 40px;
     padding: 15px 35px;
-    background-color: #F97247;
+    background: rgba(49, 18, 18, 1);
     text-decoration: none;
     color: #fff;
     margin: 0;
     margin-bottom: 6px;
+}
+
+.blog_wrapper .active {
+    background-color: #F97247;
 }
 
 .blog_wrapper .link_blog p {
