@@ -50,41 +50,45 @@ function handleScroll(e) {
 
 
 window.onload = function() {
-    let imageContainer = document.getElementById('imageContainer');
-    let images = imageContainer.getElementsByTagName('img');
+  let imageContainer = document.getElementById('imageContainer');
+  let images = imageContainer.getElementsByTagName('img');
 
-    let imageWidth = images[0].clientWidth;
-    let speed = [2, -2, 2]; // Скорость прокрутки для каждого изображения
+  let imageWidth = images[0].clientWidth;
+  let speed = [2, -2, 2]; // Скорость прокрутки для каждого изображения
 
-    // Создаем копии изображений для бесконечной прокрутки
-    for (let i = 0; i < images.length; i++) {
-        let clone = images[i].cloneNode();
-        imageContainer.appendChild(clone);
-    }
+  // Функция для обновления позиции изображений
+  function updatePositions() {
+      for (let i = 0; i < images.length; i++) {
+          let currentLeft = parseInt(window.getComputedStyle(images[i]).left);
+          images[i].style.left = (currentLeft - speed[i]) + 'px';
 
-    // Функция для обновления позиции изображений
-    function updatePositions() {
-        for (let i = 0; i < images.length; i++) {
-            images[i].style.left = (images[i].offsetLeft - speed[i]) + 'px';
+          // Если изображение полностью вышло за границы контейнера, перемещаем его обратно
+          if (speed[i] > 0 && currentLeft < -imageWidth) {
+              images[i].style.left = imageWidth + 'px';
+          } else if (speed[i] < 0 && currentLeft > imageWidth) {
+              images[i].style.left = -imageWidth + 'px';
+          }
+      }
+  }
 
-            // Если изображение полностью вышло за границы контейнера, перемещаем его обратно
-            if (speed[i] > 0 && images[i].offsetLeft < -imageWidth) {
-                images[i].style.left = imageWidth + 'px';
-            } else if (speed[i] < 0 && images[i].offsetLeft > imageWidth) {
-                images[i].style.left = -imageWidth + 'px';
-            }
-        }
-    }
+  //Проверяем, загружены ли все изображения
+  let imagesLoaded = 0;
+  for (let i = 0; i < images.length; i++) {
+      images[i].onload = function() {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) {
+              // Если все изображения загружены, начинаем обновлять позиции изображений каждые 20 миллисекунд
+              setInterval(updatePositions, 20);
 
-    // Проверяем, загружены ли все изображения
-    let imagesLoaded = 0;
-    for (let i = 0; i < images.length; i++) {
-        images[i].onload = function() {
-            imagesLoaded++;
-            if (imagesLoaded === images.length) {
-                // Если все изображения загружены, начинаем обновлять позиции изображений каждые 20 миллисекунд
-                setInterval(updatePositions, 20);
-            }
-        }
-    }
+              // Создаем копии изображений для бесконечной прокрутки
+              for (let i = 0; i < images.length; i++) {
+                  let clone = images[i].cloneNode();
+                  imageContainer.appendChild(clone);
+              }
+
+              // Запускаем обновление позиций изображений
+              updatePositions();
+          }
+      }
+  }
 }

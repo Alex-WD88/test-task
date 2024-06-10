@@ -1,0 +1,47 @@
+body{
+    font-family: Lexend;
+    color: #fff;
+    background-color: #191D0A;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    text-align: left;
+}
+
+.conteiner {
+    display: block;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.html, body::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    margin: 0;
+    scrollbar-width: none;
+  }
+
+/* Работает в Firefox */
+.blog_wrapper {
+    scrollbar-width: none;
+}
+
+/* Работает в Chrome, Edge и Safari */
+.blog_wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.main_btn {
+    display: block;
+    background-color: #F97247;
+    border-radius: 48px;
+    padding: 15px 20px;
+    color: #fff;
+    line-height: 22,5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}

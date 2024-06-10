@@ -1,0 +1,41 @@
+.ds_btn {
+    display: none;
+}
+
+.nav_menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    border: #F97247 solid 2px;
+    border-radius: 64px;
+}
+
+.nav_menu .list_menu {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #191D0A;
+    padding: 0;
+    margin: 0;
+}
+
+.nav_menu .list_menu li {
+    display: block;
+    width: 100%;
+    list-style: none;
+    border: #F97247 solid 2px;
+    border-radius: 28px;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.nav_menu .list_menu li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    margin: 0;
+    padding: 13px 20px;
+}
